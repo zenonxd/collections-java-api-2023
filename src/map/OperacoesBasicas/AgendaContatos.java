@@ -1,5 +1,6 @@
 package map.OperacoesBasicas;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,14 +16,36 @@ public class AgendaContatos {
     }
 
     void removerContato(String nome) {
-        contatos.remove(nome);
+        if (!contatos.isEmpty()) {
+            contatos.remove(nome);
+        }
     }
 
     void exibirContatos() {
         System.out.println(contatos);
     }
 
-    void pesquisarPorNome(String nome) {
-        System.out.println(contatos.get(nome));
+    public Integer pesquisarPorNome(String nome) {
+        Integer numberName = null;
+        if (!contatos.isEmpty()) {
+            numberName = contatos.get(nome);
+        }
+        return numberName;
+    }
+
+    public static void main(String[] args) {
+        AgendaContatos agendaContatos = new AgendaContatos();
+
+        agendaContatos.adicionarContato("Camila", 123456);
+        agendaContatos.adicionarContato("Camila", 5665);
+        agendaContatos.adicionarContato("Camila Cavalcante", 1111111);
+        agendaContatos.adicionarContato("Camila DIO", 654987);
+        agendaContatos.adicionarContato("Maria Silva", 1111111);
+        agendaContatos.adicionarContato("Camila", 44444);
+
+        agendaContatos.exibirContatos();
+
+        agendaContatos.removerContato("Maria Silva");
+        agendaContatos.exibirContatos();
     }
 }
